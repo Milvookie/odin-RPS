@@ -1,4 +1,4 @@
-let buttons = document.querySelectorAll("button")
+const buttons = document.querySelectorAll("button")
 const choices = document.querySelectorAll(".choice")
 const winner = document.querySelector(".winner")
 const victoryCount = document.querySelector('.result')
@@ -31,11 +31,11 @@ function playGame(humanChoice) {
     let roundNumber = humanScore + computerScore + drawScore
 
     playRound(humanChoice)
-        if (roundNumber == 4) {
-            displayWinner()
-            createResetBtn()
-            togglePlayerButton(true)
-        }
+    if (roundNumber == 4) {
+        displayWinner()
+        createResetBtn()
+        isPlayerButtonDisabled(true)
+    }
 
 }
 
@@ -100,10 +100,10 @@ function resetGame() {
     winner.textContent = ''
     document.querySelector('h2').remove()
     humanScore = computerScore = drawScore = 0;
-    togglePlayerButton(false)
+    isPlayerButtonDisabled(false)
     document.getElementById('resetBtn').remove()
 }
 
-function togglePlayerButton(bool) {
+function isPlayerButtonDisabled(bool) {
     buttons.forEach(item => item.disabled = bool)
 }
